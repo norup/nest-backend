@@ -20,13 +20,24 @@ export class UsersService {
   ) {}
 
   async getAllUsers(query: GetUserQuery): Promise<UserDto[]> {
-    const users: UserDto[] = await this.userRepository
+    const users: UserEntity[] = await this.userRepository
       .createQueryBuilder()
       .limit(query.limit || 10)
       .offset(query.offset || 0)
       .getMany();
 
-    return users;
+    const validatedUsersOutput: UserDto[] = users.map((user) => {
+      return {
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        dateOfBirth: user.dateOfBirth,
+        profilePicture: user.profilePicture,
+      };
+    });
+
+    return validatedUsersOutput;
   }
 
   async getUserByUsername(username: string): Promise<UserDto> {
@@ -39,7 +50,6 @@ export class UsersService {
     }
 
     return {
-      id: user.id,
       username: user.username,
       firstName: user.firstName,
       lastName: user.lastName,
