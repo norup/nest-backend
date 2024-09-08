@@ -1,15 +1,20 @@
-module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
+import type { Config } from '@jest/types';
+
+const config: Config.InitialOptions = {
   moduleFileExtensions: ['js', 'json', 'ts'],
-  rootDir: './src',
-  testMatch: ['**/*.spec.ts'],
+  modulePaths: ['.'],
+  testRegex: '.*\\.spec\\.ts$',
   transform: {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
+  rootDir: 'src',
+  collectCoverageFrom: ['src/**/*.(t|j)s'],
+  coveragePathIgnorePatterns: ['src/database'],
+  coverageDirectory: 'coverage',
+  testEnvironment: 'node',
   moduleNameMapper: {
-    '^@(.*)$': '<rootDir>/$1',
+    '@entity': '<rootDir>/entity/$1', // Update this to match your alias path
   },
-  coverageDirectory: '../coverage',
-  testPathIgnorePatterns: ['<rootDir>/dist/'],
 };
+
+export default config;
