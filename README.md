@@ -20,8 +20,8 @@ Before you begin, ensure you have the following installed:
 First, clone the repository to your local machine:
 
 ```bash
-git clone <your-repository-url>
-cd <your-repository-folder>
+git clone https://github.com/norup/nest-backend
+cd nest-backend
 ```
 
 ### 2. Set Up Environment Variables
@@ -30,6 +30,7 @@ Create a .env file in the root directory of the project with the following conte
 
 # Database configuration
 
+```bash
 DATABASE_TYPE=postgres
 DATABASE_URL=postgres://postgres:postgres@postgres:5432/example_db
 PGHOST=postgres
@@ -38,6 +39,7 @@ POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 POSTGRES_DB=example_db
 DATABASE_SYNCHRONIZE=true
+```
 
 # Environment configuration
 
