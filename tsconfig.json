@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": false,
+    "incremental": true,
+    "noFallthroughCasesInSwitch": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strictNullChecks": false,
+    "strictBindCallApply": false,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+    "strict": false,
+    "moduleResolution": "Node",
+    "composite": false,
+    "module": "commonjs",
+    "declaration": true,
+    "target": "ES2021",
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "paths": {
+      "@*": ["./src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"],
+  "watchOptions": {
+    "watchFile": "dynamicPriorityPolling",
+    "watchDirectory": "dynamicPriorityPolling",
+    "excludeDirectories": ["**/node_modules", "dist"]
+  }
+}

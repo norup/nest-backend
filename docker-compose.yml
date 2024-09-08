@@ -1,0 +1,44 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:16
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    networks:
+      - pg_network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    volumes:
+      - ./src:/app/src
+    networks:
+      - pg_network
+    env_file:
+      - .env
+
+networks:
+  pg_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
